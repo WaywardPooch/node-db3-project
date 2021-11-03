@@ -12,7 +12,7 @@ const checkSchemeId = async (req, res, next) => {
   try {
     const { scheme_id } = req.params;
     const scheme = await Scheme.findById(scheme_id);
-    if (typeof scheme === "undefined") {
+    if (scheme === null) {
       next({
         status: 404,
         message: `scheme with scheme_id ${scheme_id} not found`
